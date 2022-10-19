@@ -1,33 +1,33 @@
-team,NULL,NULL
-Argentina,NULL,NULL
-Australia,NULL,NULL
-Belgium,NULL,NULL
-Brazil,NULL,NULL
-Cameroon,NULL,NULL
-Canada,NULL,NULL
-"Costa Rica",NULL,NULL
-Croatia,NULL,NULL
-Denmark,NULL,NULL
-Ecuador,NULL,NULL
-England,NULL,NULL
-France,NULL,NULL
-Germany,NULL,NULL
-Ghana,NULL,NULL
-Iran,NULL,NULL
-Japan,NULL,NULL
-"Korea Republic",NULL,NULL
-Mexico,NULL,NULL
-Morocco,NULL,NULL
-Netherlands,NULL,NULL
-Poland,NULL,NULL
-Portugal,NULL,NULL
-Qatar,NULL,NULL
-"Saudi Arabia",NULL,NULL
-Senegal,NULL,NULL
-Serbia,NULL,NULL
-Spain,NULL,NULL
-Switzerland,NULL,NULL
-Tunisia,NULL,NULL
-Uruguay,NULL,NULL
-USA,NULL,NULL
-Wales,NULL,NULL
+name	groupname
+Argentina	C
+Australia	D
+Belgium	F
+Brazil	G
+Cameroon	G
+Canada	F
+Costa Rica	E
+Croatia	F
+Denmark	D
+Ecuador	A
+England	B
+France	D
+Germany	E
+Ghana	H
+Iran	B
+Japan	E
+Korea Republic	H
+Mexico	C
+Morocco	F
+Netherlands	A
+Poland	H
+Portugal	C
+Qatar	A
+Saudi Arabia	C
+Senegal	A
+Serbia	G
+Spain	E
+Switzerland	G
+Tunisia	D
+Uruguay	H
+USA	B
+Wales	B
