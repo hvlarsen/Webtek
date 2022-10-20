@@ -4,7 +4,6 @@
     public $team1, $team2;
     public $goals1, $goals2;
 
-      
     /* contructor funktion, der sætter de to teamnavne */
     function __construct($team1, $team2)
     {
@@ -42,6 +41,21 @@
       /* Opdaterer matches tabellen */
       $sql_query = "UPDATE matches SET goals1 = " . $this->goals1 . ", goals2 = " . $this->goals2 . ", played = 1 " . 
                    "where Team1 = '" . $this->team1->name . "' and Team2 = '" . $this->team2->name . "';";
+      $conn->query($sql_query);
+
+      /* !!! Der skal gøres et eller andet her, så det ikke altid er Team1 der er vinderen ved uafgjort (forlænget spilletid og straffe)*/
+      if ($this->goals1 > $this->goals2)
+      {
+        $winner = $this->team1->name;
+        $loser  = $this->team2->name;
+      }
+      else 
+      { 
+        $winner = $this->team2->name;
+        $loser  = $this->team1->name;
+      }
+      
+      $sql_query = "UPDATE matches SET winner = '" . $winner . "',  loser = '" . $loser . "' where Team1 = '" . $this->team1->name . "' and Team2 = '" . $this->team2->name . "';";
       $conn->query($sql_query);
 
       /* Opdaterer team_points tabellen */

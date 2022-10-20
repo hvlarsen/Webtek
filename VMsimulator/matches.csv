@@ -1,65 +1,65 @@
-MatchID	RoundNumber	Date	Location	Team1	Team2	Team1_goals	Team2_goals	IsPlayed
-1	1	2022-11-20 16:00:00	Al Bayt Stadium	Qatar	Ecuador			
-2	1	2022-11-21 13:00:00	Khalifa International Stadium	England	Iran			
-3	1	2022-11-21 16:00:00	Al Thumama Stadium	Senegal	Netherlands			
-4	1	2022-11-21 19:00:00	Ahmad Bin Ali Stadium	USA	Wales			
-5	1	2022-11-22 10:00:00	Lusail Stadium	Argentina	Saudi Arabia			
-6	1	2022-11-22 13:00:00	Education City Stadium	Denmark	Tunisia			
-7	1	2022-11-22 16:00:00	Stadium 974	Mexico	Poland			
-8	1	2022-11-22 19:00:00	Al Janoub Stadium	France	Australia			
-9	1	2022-11-23 10:00:00	Al Bayt Stadium	Morocco	Croatia			
-10	1	2022-11-23 13:00:00	Khalifa International Stadium	Germany	Japan			
-11	1	2022-11-23 16:00:00	Al Thumama Stadium	Spain	Costa Rica			
-12	1	2022-11-23 19:00:00	Ahmad Bin Ali Stadium	Belgium	Canada			
-13	1	2022-11-24 10:00:00	Al Janoub Stadium	Switzerland	Cameroon			
-14	1	2022-11-24 13:00:00	Education City Stadium	Uruguay	Korea Republic			
-15	1	2022-11-24 16:00:00	Stadium 974	Portugal	Ghana			
-16	1	2022-11-24 19:00:00	Lusail Stadium	Brazil	Serbia			
-17	2	2022-11-25 10:00:00	Ahmad Bin Ali Stadium	Wales	Iran			
-18	2	2022-11-25 13:00:00	Al Thumama Stadium	Qatar	Senegal			
-19	2	2022-11-25 16:00:00	Khalifa International Stadium	Netherlands	Ecuador			
-20	2	2022-11-25 19:00:00	Al Bayt Stadium	England	USA			
-21	2	2022-11-26 10:00:00	Al Janoub Stadium	Tunisia	Australia			
-22	2	2022-11-26 13:00:00	Education City Stadium	Poland	Saudi Arabia			
-23	2	2022-11-26 16:00:00	Stadium 974	France	Denmark			
-24	2	2022-11-26 19:00:00	Lusail Stadium	Argentina	Mexico			
-25	2	2022-11-27 10:00:00	Ahmad Bin Ali Stadium	Japan	Costa Rica			
-26	2	2022-11-27 13:00:00	Al Thumama Stadium	Belgium	Morocco			
-27	2	2022-11-27 16:00:00	Khalifa International Stadium	Croatia	Canada			
-28	2	2022-11-27 19:00:00	Al Bayt Stadium	Spain	Germany			
-29	2	2022-11-28 10:00:00	Al Janoub Stadium	Cameroon	Serbia			
-30	2	2022-11-28 13:00:00	Education City Stadium	Korea Republic	Ghana			
-31	2	2022-11-28 16:00:00	Stadium 974	Brazil	Switzerland			
-32	2	2022-11-28 19:00:00	Lusail Stadium	Portugal	Uruguay			
-33	3	2022-11-29 15:00:00	Khalifa International Stadium	Ecuador	Senegal			
-34	3	2022-11-29 15:00:00	Al Bayt Stadium	Netherlands	Qatar			
-35	3	2022-11-29 19:00:00	Ahmad Bin Ali Stadium	Wales	England			
-36	3	2022-11-29 19:00:00	Al Thumama Stadium	Iran	USA			
-37	3	2022-11-30 15:00:00	Al Janoub Stadium	Australia	Denmark			
-38	3	2022-11-30 15:00:00	Education City Stadium	Tunisia	France			
-39	3	2022-11-30 19:00:00	Stadium 974	Poland	Argentina			
-40	3	2022-11-30 19:00:00	Lusail Stadium	Saudi Arabia	Mexico			
-41	3	2022-12-01 15:00:00	Ahmad Bin Ali Stadium	Croatia	Belgium			
-42	3	2022-12-01 15:00:00	Al Thumama Stadium	Canada	Morocco			
-43	3	2022-12-01 19:00:00	Khalifa International Stadium	Japan	Spain			
-44	3	2022-12-01 19:00:00	Al Bayt Stadium	Costa Rica	Germany			
-45	3	2022-12-02 15:00:00	Al Janoub Stadium	Ghana	Uruguay			
-46	3	2022-12-02 15:00:00	Education City Stadium	Korea Republic	Portugal			
-47	3	2022-12-02 19:00:00	Stadium 974	Serbia	Switzerland			
-48	3	2022-12-02 19:00:00	Lusail Stadium	Cameroon	Brazil			
-49	Round of 16	2022-12-03 15:00:00	TBA	1A	2B			
-50	Round of 16	2022-12-03 19:00:00	TBA	1C	2D			
-51	Round of 16	2022-12-04 15:00:00	TBA	1D	2C			
-52	Round of 16	2022-12-04 19:00:00	TBA	1B	2A			
-53	Round of 16	2022-12-05 15:00:00	TBA	1E	2F			
-54	Round of 16	2022-12-05 19:00:00	TBA	1G	2H			
-55	Round of 16	2022-12-06 15:00:00	TBA	1F	2E			
-56	Round of 16	2022-12-06 19:00:00	TBA	1H	2G			
-57	Quarter Finals	2022-12-09 15:00:00	TBA	To be announced	To be announced			
-58	Quarter Finals	2022-12-09 19:00:00	TBA	To be announced	To be announced			
-59	Quarter Finals	2022-12-10 15:00:00	TBA	To be announced	To be announced			
-60	Quarter Finals	2022-12-10 19:00:00	TBA	To be announced	To be announced			
-61	Semi Finals	2022-12-13 19:00:00	TBA	To be announced	To be announced			
-62	Semi Finals	2022-12-14 19:00:00	TBA	To be announced	To be announced			
-63	Finals	2022-12-17 15:00:00	TBA	To be announced	To be announced			
-64	Finals	2022-12-18 15:00:00	TBA	To be announced	To be announced			
+MatchID	RoundNumber	Date	Location	Team1	Team2	goals1	goals2	winner	loser	played	Team1_source	Team2_source
+1	1	2022-11-20 16:00:00	Al Bayt Stadium	Qatar	Ecuador						Predefined	Predefined
+2	1	2022-11-21 13:00:00	Khalifa International Stadium	England	Iran						Predefined	Predefined
+3	1	2022-11-21 16:00:00	Al Thumama Stadium	Senegal	Netherlands						Predefined	Predefined
+4	1	2022-11-21 19:00:00	Ahmad Bin Ali Stadium	USA	Wales						Predefined	Predefined
+5	1	2022-11-22 10:00:00	Lusail Stadium	Argentina	Saudi Arabia						Predefined	Predefined
+6	1	2022-11-22 13:00:00	Education City Stadium	Denmark	Tunisia						Predefined	Predefined
+7	1	2022-11-22 16:00:00	Stadium 974	Mexico	Poland						Predefined	Predefined
+8	1	2022-11-22 19:00:00	Al Janoub Stadium	France	Australia						Predefined	Predefined
+9	1	2022-11-23 10:00:00	Al Bayt Stadium	Morocco	Croatia						Predefined	Predefined
+10	1	2022-11-23 13:00:00	Khalifa International Stadium	Germany	Japan						Predefined	Predefined
+11	1	2022-11-23 16:00:00	Al Thumama Stadium	Spain	Costa Rica						Predefined	Predefined
+12	1	2022-11-23 19:00:00	Ahmad Bin Ali Stadium	Belgium	Canada						Predefined	Predefined
+13	1	2022-11-24 10:00:00	Al Janoub Stadium	Switzerland	Cameroon						Predefined	Predefined
+14	1	2022-11-24 13:00:00	Education City Stadium	Uruguay	Korea Republic						Predefined	Predefined
+15	1	2022-11-24 16:00:00	Stadium 974	Portugal	Ghana						Predefined	Predefined
+16	1	2022-11-24 19:00:00	Lusail Stadium	Brazil	Serbia						Predefined	Predefined
+17	2	2022-11-25 10:00:00	Ahmad Bin Ali Stadium	Wales	Iran						Predefined	Predefined
+18	2	2022-11-25 13:00:00	Al Thumama Stadium	Qatar	Senegal						Predefined	Predefined
+19	2	2022-11-25 16:00:00	Khalifa International Stadium	Netherlands	Ecuador						Predefined	Predefined
+20	2	2022-11-25 19:00:00	Al Bayt Stadium	England	USA						Predefined	Predefined
+21	2	2022-11-26 10:00:00	Al Janoub Stadium	Tunisia	Australia						Predefined	Predefined
+22	2	2022-11-26 13:00:00	Education City Stadium	Poland	Saudi Arabia						Predefined	Predefined
+23	2	2022-11-26 16:00:00	Stadium 974	France	Denmark						Predefined	Predefined
+24	2	2022-11-26 19:00:00	Lusail Stadium	Argentina	Mexico						Predefined	Predefined
+25	2	2022-11-27 10:00:00	Ahmad Bin Ali Stadium	Japan	Costa Rica						Predefined	Predefined
+26	2	2022-11-27 13:00:00	Al Thumama Stadium	Belgium	Morocco						Predefined	Predefined
+27	2	2022-11-27 16:00:00	Khalifa International Stadium	Croatia	Canada						Predefined	Predefined
+28	2	2022-11-27 19:00:00	Al Bayt Stadium	Spain	Germany						Predefined	Predefined
+29	2	2022-11-28 10:00:00	Al Janoub Stadium	Cameroon	Serbia						Predefined	Predefined
+30	2	2022-11-28 13:00:00	Education City Stadium	Korea Republic	Ghana						Predefined	Predefined
+31	2	2022-11-28 16:00:00	Stadium 974	Brazil	Switzerland						Predefined	Predefined
+32	2	2022-11-28 19:00:00	Lusail Stadium	Portugal	Uruguay						Predefined	Predefined
+33	3	2022-11-29 15:00:00	Khalifa International Stadium	Ecuador	Senegal						Predefined	Predefined
+34	3	2022-11-29 15:00:00	Al Bayt Stadium	Netherlands	Qatar						Predefined	Predefined
+35	3	2022-11-29 19:00:00	Ahmad Bin Ali Stadium	Wales	England						Predefined	Predefined
+36	3	2022-11-29 19:00:00	Al Thumama Stadium	Iran	USA						Predefined	Predefined
+37	3	2022-11-30 15:00:00	Al Janoub Stadium	Australia	Denmark						Predefined	Predefined
+38	3	2022-11-30 15:00:00	Education City Stadium	Tunisia	France						Predefined	Predefined
+39	3	2022-11-30 19:00:00	Stadium 974	Poland	Argentina						Predefined	Predefined
+40	3	2022-11-30 19:00:00	Lusail Stadium	Saudi Arabia	Mexico						Predefined	Predefined
+41	3	2022-12-01 15:00:00	Ahmad Bin Ali Stadium	Croatia	Belgium						Predefined	Predefined
+42	3	2022-12-01 15:00:00	Al Thumama Stadium	Canada	Morocco						Predefined	Predefined
+43	3	2022-12-01 19:00:00	Khalifa International Stadium	Japan	Spain						Predefined	Predefined
+44	3	2022-12-01 19:00:00	Al Bayt Stadium	Costa Rica	Germany						Predefined	Predefined
+45	3	2022-12-02 15:00:00	Al Janoub Stadium	Ghana	Uruguay						Predefined	Predefined
+46	3	2022-12-02 15:00:00	Education City Stadium	Korea Republic	Portugal						Predefined	Predefined
+47	3	2022-12-02 19:00:00	Stadium 974	Serbia	Switzerland						Predefined	Predefined
+48	3	2022-12-02 19:00:00	Lusail Stadium	Cameroon	Brazil						Predefined	Predefined
+49	Round of 16	2022-12-03 15:00:00	TBA								1A	2B
+50	Round of 16	2022-12-03 19:00:00	TBA								1C	2D
+51	Round of 16	2022-12-04 15:00:00	TBA								1D	2C
+52	Round of 16	2022-12-04 19:00:00	TBA								1B	2A
+53	Round of 16	2022-12-05 15:00:00	TBA								1E	2F
+54	Round of 16	2022-12-05 19:00:00	TBA								1G	2H
+55	Round of 16	2022-12-06 15:00:00	TBA								1F	2E
+56	Round of 16	2022-12-06 19:00:00	TBA								1H	2G
+57	Quarter Finals	2022-12-09 15:00:00	TBA								W49	W50
+58	Quarter Finals	2022-12-09 19:00:00	TBA								W53	W54
+59	Quarter Finals	2022-12-10 15:00:00	TBA								W51	W52
+60	Quarter Finals	2022-12-10 19:00:00	TBA								W55	W56
+61	Semi Finals	2022-12-13 19:00:00	TBA								W57	W58
+62	Semi Finals	2022-12-14 19:00:00	TBA								W59	W60
+63	Finals	2022-12-17 15:00:00	TBA								L61	L62
+64	Finals	2022-12-18 15:00:00	TBA								W61	W62

@@ -40,6 +40,10 @@
   $sim->simulate_round("1", $conn);
   $sim->simulate_round("2", $conn);
   $sim->simulate_round("3", $conn);
+  $sim->simulate_round("Round of 16", $conn);
+  $sim->simulate_round("Quarter Finals", $conn);
+  $sim->simulate_round("Semi Finals", $conn);
+  $sim->simulate_round("Finals", $conn);
    
 
 //  $match = new Match_($team1, $team2);
