@@ -36,7 +36,7 @@
 
   // $match->update_match($conn);
    
-  $sim = new Simulation();
+  $sim = new Simulation($conn);
   $sim->simulate_round("1", $conn);
   $sim->simulate_round("2", $conn);
   $sim->simulate_round("3", $conn);

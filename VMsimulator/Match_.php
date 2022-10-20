@@ -36,11 +36,11 @@
     }
 
     /* Method, der opdaterer db med resultatet af match */
-    function update_match($conn)
+    function update_match($conn, $SimulationID)
     {
-      /* Opdaterer matches tabellen */
-      $sql_query = "UPDATE matches SET goals1 = " . $this->goals1 . ", goals2 = " . $this->goals2 . ", played = 1 " . 
-                   "where Team1 = '" . $this->team1->name . "' and Team2 = '" . $this->team2->name . "';";
+      /* Opdaterer simulation_results tabellen */
+      $sql_query = "UPDATE simulation_results SET goals1 = " . $this->goals1 . ", goals2 = " . $this->goals2 . ", played = 1 " . 
+                   "where Team1 = '" . $this->team1->name . "' and Team2 = '" . $this->team2->name . "' AND SimulationID = " . $SimulationID . ";";
       $conn->query($sql_query);
 
       /* !!! Der skal gøres et eller andet her, så det ikke altid er Team1 der er vinderen ved uafgjort (forlænget spilletid og straffe)*/
@@ -55,7 +55,10 @@
         $loser  = $this->team1->name;
       }
       
-      $sql_query = "UPDATE matches SET winner = '" . $winner . "',  loser = '" . $loser . "' where Team1 = '" . $this->team1->name . "' and Team2 = '" . $this->team2->name . "';";
+      $sql_query = "UPDATE  simulation_results SET winner = '" . $winner . "',  loser = '" . $loser . "' 
+                    WHERE Team1 = '" . $this->team1->name . "' 
+                    AND Team2 = '" . $this->team2->name . "' 
+                    AND SimulationID = " . $SimulationID . ";";
       $conn->query($sql_query);
 
       /* Opdaterer team_points tabellen */
@@ -65,8 +68,6 @@
       $conn->query($sql_query);
 
       /* Opdaterer team_strength tabellen */
-
-
     }
   }
 ?>

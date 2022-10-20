@@ -1,11 +1,37 @@
 <?php
   class Simulation
   {
-    
-    /* contrutor funktion, der sætter de to teamnavne */
-    function __construct()
-    {
+    public $SimulationID;
 
+    /* contrutor, opretter nyt SimulationID  */
+    function __construct($conn)
+    {
+      /* Opretter simulationid i simulations */
+      $user = 'localhost'; // Skal ændres til brugeren, der opretter simulationen
+      $Date = date('Y-m-d h:i:s');
+      $sql_query = "INSERT INTO simulations (User , Date) VALUES ('" . $user . "', '" . $Date . "');";
+      $conn->query($sql_query);
+
+      /* Sætter Simid */
+      $sql_query = "SELECT max(SimulationID) as SimulationID FROM simulations;";
+      $result = $conn->query($sql_query);
+      while ($row = $result->fetch_assoc())
+      {
+        $this->SimulationID = $row['SimulationID'];
+      }
+
+      /* Opretter skelet til ny simulation_results */
+      $sql_query = "SELECT * FROM matches;";
+      $result = $conn->query($sql_query);
+      while ($row = $result->fetch_assoc())
+      {
+        $sql_query = "INSERT INTO simulation_results (SimulationID, MatchID, Roundnumber, Team1, Team2, goals1, goals2, winner, loser, played, Team1_source, Team2_source) 
+                      VALUES (" . $this->SimulationID . ", " . $row['MatchID'] . ", '" . $row['RoundNumber'] . "','" . $row['Team1'] . "','" . $row['Team2'] . "',
+                      " . $row['goals1'] . "," . $row['goals2'] . ",'" . $row['winner'] . "','" . $row['loser'] . "'," . $row['played'] . ",
+                      '" . $row['Team1_source'] . "', '" . $row['Team2_source'] . "');";
+        $conn->query($sql_query);
+      }
+      
     }
 
     /* Method, der simulerer resultaterne af gruppekampe */   
@@ -23,7 +49,7 @@
 
       /* spiller rundens kampe */
       foreach ($matches as $value){
-        $sql_query = "SELECT team1, team2 FROM matches where matchID='$value';";
+        $sql_query = "SELECT team1, team2 FROM simulation_results WHERE matchID='$value' AND SimulationID =" .  $this->SimulationID . ";";
         $result = $conn->query($sql_query);
         while ($row = $result->fetch_assoc())
         {
@@ -33,11 +59,12 @@
           $team2->load_strength($team2->conn);
           $match = new Match_($team1, $team2);
           $match->play();
-          $match->update_match($conn);
+          $match->update_match($conn, $this->SimulationID);
           echo $team1->name . "(" . $team1->attack . " , " . $team1->defense . ") - " . $team2->name . "(" . $team2->attack . " , " . $team2->defense . ") " 
                . $match->goals1 . " - " . $match->goals2 . "<br>";
         }
       }
+
       /* Opdaterer turneringsplanen med de hold, der er gået videre */
       if ($round == "3")
       {
@@ -60,9 +87,9 @@
           }
           echo $group . $rank . $row['Team'] . $row['points'] . "<br>";
           /* Opdaterer turneringsplanen */
-          $sql_query = "UPDATE matches SET Team1 = '" .  $row['Team'] . "' WHERE Team1_source = '" . $rank . $group . "';";
+          $sql_query = "UPDATE simulation_results SET Team1 = '" .  $row['Team'] . "' WHERE Team1_source = '" . $rank . $group . "';";
           $conn->query($sql_query);
-          $sql_query = "UPDATE matches SET Team2 = '" .  $row['Team'] . "' WHERE Team2_source = '" . $rank . $group . "';";
+          $sql_query = "UPDATE simulation_results SET Team2 = '" .  $row['Team'] . "' WHERE Team2_source = '" . $rank . $group . "';";
           $conn->query($sql_query);
           $rank++;
         }
@@ -70,17 +97,17 @@
       if ($round == "Round of 16" or $round == "Quarter Finals" or $round == "Semi Finals")
       {
         /* Opdaterer turneringsplanen */
-        $sql_query = "SELECT MatchID, winner, loser FROM matches WHERE RoundNumber = '" . $round. "';";
+        $sql_query = "SELECT MatchID, winner, loser FROM simulation_results WHERE RoundNumber = '" . $round. "';";
         $result = $conn->query($sql_query);
         while ($row = $result->fetch_assoc())
         {
-          $sql_query = "UPDATE matches SET Team1 = '" .  $row['winner'] . "' WHERE Team1_source = 'W" . $row['MatchID'] . "';";
+          $sql_query = "UPDATE simulation_results SET Team1 = '" .  $row['winner'] . "' WHERE Team1_source = 'W" . $row['MatchID'] . "';";
           $conn->query($sql_query);
-          $sql_query = "UPDATE matches SET Team2 = '" .  $row['winner'] . "' WHERE Team2_source = 'W" . $row['MatchID'] . "';";
+          $sql_query = "UPDATE simulation_results SET Team2 = '" .  $row['winner'] . "' WHERE Team2_source = 'W" . $row['MatchID'] . "';";
           $conn->query($sql_query);
-          $sql_query = "UPDATE matches SET Team1 = '" .  $row['loser'] . "' WHERE Team1_source = 'L" . $row['MatchID'] . "';";
+          $sql_query = "UPDATE simulation_results SET Team1 = '" .  $row['loser'] . "' WHERE Team1_source = 'L" . $row['MatchID'] . "';";
           $conn->query($sql_query);
-          $sql_query = "UPDATE matches SET Team2 = '" .  $row['loser'] . "' WHERE Team2_source = 'L" . $row['MatchID'] . "';";
+          $sql_query = "UPDATE simulation_results SET Team2 = '" .  $row['loser'] . "' WHERE Team2_source = 'L" . $row['MatchID'] . "';";
           $conn->query($sql_query);
         }
       }
