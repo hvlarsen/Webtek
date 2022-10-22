@@ -31,7 +31,6 @@
                       '" . $row['Team1_source'] . "', '" . $row['Team2_source'] . "');";
         $conn->query($sql_query);
       }
-      
     }
 
     /* Method, der simulerer resultaterne af gruppekampe */   
