@@ -1,15 +1,32 @@
 .GroupA {position:absolute; left:30px}
+.GroupB {position:absolute; left:240px}
+.GroupC {position:absolute; left:450px}
+.GroupD {position:absolute; left:660px}
+.GroupE {position:absolute; left:870px}
+.GroupF {position:absolute; left:1080px}
+.GroupG {position:absolute; left:1290px}
+.GroupH {position:absolute; left:1500px}
 
-.GroupB {position:absolute; left:230px}
+.headerGroupMatches {position:absolute; left:30px; top:120px}
+.GroupmatchesA {position:absolute; top: 170px; left:30px}
+.GroupmatchesB {position:absolute; top: 170px; left:240px}
+.GroupmatchesC {position:absolute; top: 170px; left:450px}
+.GroupmatchesD {position:absolute; top: 170px; left:660px}
+.GroupmatchesE {position:absolute; top: 170px; left:870px}
+.GroupmatchesF {position:absolute; top: 170px; left:1080px}
+.GroupmatchesG {position:absolute; top: 170px; left:1290px}
+.GroupmatchesH {position:absolute; top: 170px; left:1500px}
 
-.GroupC {position:absolute; left:430px}
+.headerRoundOf16Matches {position:absolute; top:300px; left:30px}
+.RoundOf16Matches {position:absolute; top: 350px; left:30px}
 
-.GroupD {position:absolute; left:630px}
+.headerQuarterFinals {position:absolute; top:510px; left:30px }
+.QuarterFinals {position:absolute; top: 560px; left:30px}
 
-.GroupE {position:absolute; left:830px}
+.headerSemiFinals {position:absolute; top:640px; left:30px }
+.SemiFinals {position:absolute; top: 690px; left:30px}
 
-.GroupF {position:absolute; left:1030px}
+.headerFinals {position:absolute; top:720px; left:30px }
+.Finals {position:absolute; top: 770px; left:30px}
 
-.GroupG {position:absolute; left:1230px}
-
-.GroupH {position:absolute; left:1430px}
+.simButton {position:absolute; top: 500px; left:600px}

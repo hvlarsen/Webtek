@@ -31,12 +31,18 @@
                       '" . $row['Team1_source'] . "', '" . $row['Team2_source'] . "');";
         $conn->query($sql_query);
       }
+
+      /* Nulstiller points i alle grupper*/
+      $sql_query = "SELECT * FROM matches;";
+      $result = $conn->query($sql_query);
+
+
     }
 
     /* Method, der simulerer resultaterne af gruppekampe */   
     function simulate_round($round, $conn) /* round in ("1", "2", "3", "Round of 16", "Quarter Finals", "Semi Finals", "Finals") */
     {
-      echo "<br>" . $round . "<br>";
+      // echo "<br>" . $round . "<br>";
       /* Finder rundens kampe */
       $matches = array();
       $sql_query = "SELECT Matchid FROM matches where RoundNumber='$round';";
@@ -59,8 +65,8 @@
           $match = new Match_($team1, $team2);
           $match->play();
           $match->update_match($conn, $this->SimulationID);
-          echo $team1->name . "(" . $team1->attack . " , " . $team1->defense . ") - " . $team2->name . "(" . $team2->attack . " , " . $team2->defense . ") " 
-               . $match->goals1 . " - " . $match->goals2 . "<br>";
+          /* echo $team1->name . "(" . $team1->attack . " , " . $team1->defense . ") - " . $team2->name . "(" . $team2->attack . " , " . $team2->defense . ") " 
+               . $match->goals1 . " - " . $match->goals2 . "<br>";*/
         }
       }
 
@@ -84,7 +90,7 @@
             $group = $row['Groupname'];
             $rank = 1;
           }
-          echo $group . $rank . $row['Team'] . $row['points'] . "<br>";
+          // echo $group . $rank . $row['Team'] . $row['points'] . "<br>";
           /* Opdaterer turneringsplanen */
           $sql_query = "UPDATE simulation_results SET Team1 = '" .  $row['Team'] . "' WHERE Team1_source = '" . $rank . $group . "';";
           $conn->query($sql_query);

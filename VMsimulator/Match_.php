@@ -62,9 +62,13 @@
       $conn->query($sql_query);
 
       /* Opdaterer team_points tabellen */
-      $sql_query = "INSERT INTO team_points (Team, Points, Goals_for, Goals_against) 
-                    VALUES ('" . $this->team1->name . "', " . (($this->goals1 > $this->goals2)*3 + ($this->goals1 == $this->goals2)*1). ",
+      $sql_query = "INSERT INTO team_points (SimulationID, Team, Points, Goals_for, Goals_against) 
+                    VALUES (" . $SimulationID . ", '" . $this->team1->name . "', " . (($this->goals1 > $this->goals2)*3 + ($this->goals1 == $this->goals2)*1). ",
                             " . $this->goals1 . ", " . $this->goals2 . ");"; 
+      $conn->query($sql_query);
+      $sql_query = "INSERT INTO team_points (SimulationID, Team, Points, Goals_for, Goals_against) 
+      VALUES (" . $SimulationID . ", '" . $this->team2->name . "', " . (($this->goals1 < $this->goals2)*3 + ($this->goals1 == $this->goals2)*1). ",
+              " . $this->goals2 . ", " . $this->goals1 . ");"; 
       $conn->query($sql_query);
 
       /* Opdaterer team_strength tabellen */
