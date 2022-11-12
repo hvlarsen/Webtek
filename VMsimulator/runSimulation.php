@@ -9,6 +9,7 @@
 
 <link rel='stylesheet' href='styles.css'>
 
+<h1 class = 'WCheader'> FIFAWorld Cup 2022 Simulator </h1>
 <?php
    global $conn;
    require_once "login.php";
@@ -21,9 +22,7 @@
    $sim->simulate_round("2", $conn);
    $sim->simulate_round("3", $conn);
 
-   // echo "test";
    $SimulationID = $sim->SimulationID;
-
     /* Udskriver grupperne */ 
     $groups = array("A", "B", "C", "D", "E", "F", "G", "H");
     foreach ($groups as $value){
@@ -46,9 +45,8 @@
         echo " </table>";
         echo "</div>";
     }
-
     /* Udskriver gruppekampe */
-    Echo "<h1 class = 'headerGroupMatches'> Group matches </h1>";
+    /*Echo "<h1 class = 'headerGroupMatches'> Group matches </h1>";*/
     $groups = array("A", "B", "C", "D", "E", "F", "G", "H");
     foreach ($groups as $value){
         echo "<div class='Groupmatches" . $value . "'>";
@@ -69,9 +67,7 @@
         echo " </table>";
         echo "</div>";
     }
-
     $sim->simulate_round("Round of 16", $conn);
-
     /* Udskriver Round of 16 */
     Echo "<h1 class = 'headerRoundOf16Matches'> Round of 16 </h1>";
     echo "<div class='RoundOf16Matches'>";
@@ -92,7 +88,6 @@
     echo "</div>";
 
     $sim->simulate_round("Quarter Finals", $conn);
-    
     /* Udskriver Quarter Finals */
     Echo "<h1 class = 'headerQuarterFinals'> Quarter Finals </h1>";
     echo "<div class='QuarterFinals'>";
@@ -154,7 +149,9 @@
     echo " </table>";
     echo "</div>";
 
-
+    echo "<form class=simButton action='runSimulation.php'>";
+    echo "<input type='submit' value='Submit'>";
+    echo "</form>";
 
 ?>
 </body>

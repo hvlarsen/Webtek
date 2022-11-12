@@ -9,13 +9,15 @@
 
 <link rel='stylesheet' href='styles.css'>
 
+<h1 class = 'WCheader'> FIFA World Cup 2022 Simulator </h1>
+
 <?php 
   require_once "login.php";
     /* Udskriver grupperne */ 
     $groups = array("A", "B", "C", "D", "E", "F", "G", "H");
     foreach ($groups as $value){
         echo "<div class='Group" . $value . "'>";
-        $sql_query = "SELECT a.Team, sum(Goals_for - Goals_against) as goaldiff, sum(Points) as points
+        $sql_query = "SELECT a.Team, '0' as goaldiff, /*sum(Goals_for - Goals_against) as goaldiff, sum(Points)*/ '0' as points
                       FROM team_points a,
                            teams b
                       WHERE a.Team = b.Team
@@ -24,7 +26,7 @@
                       ORDER BY points desc, goaldiff desc";
         $result = $conn->query($sql_query);
         echo "Group "."$value <br>";
-        echo "<table> <tr> <th> </th> <th>GD</th> <th>points</th> </tr>";
+        echo "<table> <tr> <th> </th> <th>GD</th> <th>P</th> </tr>";
         while ($row = $result->fetch_assoc())
         {
           echo "<tr> <td> " .$row['Team'] . " </td> <td> " .$row['goaldiff'] . " </td> <td> " .$row['points'] . " </td> </tr>" ;
@@ -35,7 +37,7 @@
 
 
     /* Udskriver gruppekampe */
-    Echo "<h1 class = 'headerGroupMatches'> Group matches </h1>";
+    /* Echo "<h1 class = 'headerGroupMatches'> Group matches </h1>";*/
     $groups = array("A", "B", "C", "D", "E", "F", "G", "H");
     foreach ($groups as $value){
         echo "<div class='Groupmatches" . $value . "'>";
@@ -119,7 +121,7 @@
     echo " </table>";
     echo "</div>";
 
-    echo "<form action='runSimulation.php'>";
+    echo "<form class=simButton action='runSimulation.php'>";
     echo "<input type='submit' value='Submit'>";
     echo "</form>";
     

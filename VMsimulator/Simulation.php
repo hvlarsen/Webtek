@@ -35,8 +35,6 @@
       /* Nulstiller points i alle grupper*/
       $sql_query = "SELECT * FROM matches;";
       $result = $conn->query($sql_query);
-
-
     }
 
     /* Method, der simulerer resultaterne af gruppekampe */   
@@ -78,6 +76,7 @@
                       FROM team_points a,
                            teams b
                       WHERE a.Team = b.Team
+                      AND SimulationID =" . $this->SimulationID . "
                       GROUP BY Groupname, a.Team
                       ORDER BY Groupname, points desc, goaldiff desc";
         $result = $conn->query($sql_query);
@@ -92,9 +91,9 @@
           }
           // echo $group . $rank . $row['Team'] . $row['points'] . "<br>";
           /* Opdaterer turneringsplanen */
-          $sql_query = "UPDATE simulation_results SET Team1 = '" .  $row['Team'] . "' WHERE Team1_source = '" . $rank . $group . "';";
+          $sql_query = "UPDATE simulation_results SET Team1 = '" .  $row['Team'] . "' WHERE SimulationID =" . $this->SimulationID . " AND Team1_source = '" . $rank . $group . "';";
           $conn->query($sql_query);
-          $sql_query = "UPDATE simulation_results SET Team2 = '" .  $row['Team'] . "' WHERE Team2_source = '" . $rank . $group . "';";
+          $sql_query = "UPDATE simulation_results SET Team2 = '" .  $row['Team'] . "' WHERE SimulationID =" . $this->SimulationID . " AND Team2_source = '" . $rank . $group . "';";
           $conn->query($sql_query);
           $rank++;
         }
@@ -102,17 +101,17 @@
       if ($round == "Round of 16" or $round == "Quarter Finals" or $round == "Semi Finals")
       {
         /* Opdaterer turneringsplanen */
-        $sql_query = "SELECT MatchID, winner, loser FROM simulation_results WHERE RoundNumber = '" . $round. "';";
+        $sql_query = "SELECT MatchID, winner, loser FROM simulation_results WHERE SimulationID =" . $this->SimulationID . " AND RoundNumber = '" . $round. "';";
         $result = $conn->query($sql_query);
         while ($row = $result->fetch_assoc())
         {
-          $sql_query = "UPDATE simulation_results SET Team1 = '" .  $row['winner'] . "' WHERE Team1_source = 'W" . $row['MatchID'] . "';";
+          $sql_query = "UPDATE simulation_results SET Team1 = '" .  $row['winner'] . "' WHERE SimulationID =" . $this->SimulationID . " AND Team1_source = 'W" . $row['MatchID'] . "';";
           $conn->query($sql_query);
-          $sql_query = "UPDATE simulation_results SET Team2 = '" .  $row['winner'] . "' WHERE Team2_source = 'W" . $row['MatchID'] . "';";
+          $sql_query = "UPDATE simulation_results SET Team2 = '" .  $row['winner'] . "' WHERE SimulationID =" . $this->SimulationID . " AND Team2_source = 'W" . $row['MatchID'] . "';";
           $conn->query($sql_query);
-          $sql_query = "UPDATE simulation_results SET Team1 = '" .  $row['loser'] . "' WHERE Team1_source = 'L" . $row['MatchID'] . "';";
+          $sql_query = "UPDATE simulation_results SET Team1 = '" .  $row['loser'] . "' WHERE SimulationID =" . $this->SimulationID . " AND Team1_source = 'L" . $row['MatchID'] . "';";
           $conn->query($sql_query);
-          $sql_query = "UPDATE simulation_results SET Team2 = '" .  $row['loser'] . "' WHERE Team2_source = 'L" . $row['MatchID'] . "';";
+          $sql_query = "UPDATE simulation_results SET Team2 = '" .  $row['loser'] . "' WHERE SimulationID =" . $this->SimulationID . " AND Team2_source = 'L" . $row['MatchID'] . "';";
           $conn->query($sql_query);
         }
       }
