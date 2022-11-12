@@ -149,9 +149,30 @@
     echo " </table>";
     echo "</div>";
 
+    /* Udskriver Top 3 */
+    echo "<div class='Result'>";
+    $sql_query = "SELECT a.winner as gold, a.loser as silver, b.winner as bronze
+                  FROM (SELECT winner, loser 
+                        FROM simulation_results
+                        WHERE SimulationID = " . $SimulationID . "  
+                        AND matchid=64) a
+                  JOIN (SELECT winner
+                        FROM simulation_results
+                        WHERE SimulationID = " . $SimulationID . "  
+                        AND matchid=63) b";
+    $result = $conn->query($sql_query);
+    echo "<table> <tr> <th></th>  <th></th> <th></th> </tr>";
+    while ($row = $result->fetch_assoc())
+    {
+       echo " <tr> <td> Gold: " . $row['gold'] . "</td> <td>  Silver: " . $row['silver'] . "</td> <td> Bronze: " . $row['bronze'] . "</td> </tr>" ;
+    }           
+    echo " </table>";
+    echo "</div>";
+
     echo "<form class=simButton action='runSimulation.php'>";
-    echo "<input type='submit' value='Submit'>";
+    echo "<input type='submit' value='Start simulation'>";
     echo "</form>";
+
 
 ?>
 </body>

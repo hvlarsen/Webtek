@@ -38,4 +38,6 @@ html * {
 .headerFinals {position:absolute; top:815px; left:30px }
 .Finals {position:absolute; top: 840px; left:30px}
 
+.Result {position:absolute; top: 840px; left:630px}
+
 .simButton {position:absolute; top: 930px; left:30px}

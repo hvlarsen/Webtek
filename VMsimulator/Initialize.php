@@ -122,7 +122,7 @@
     echo "</div>";
 
     echo "<form class=simButton action='runSimulation.php'>";
-    echo "<input type='submit' value='Submit'>";
+    echo "<input type='submit' value='Start simulation'>";
     echo "</form>";
     
     
