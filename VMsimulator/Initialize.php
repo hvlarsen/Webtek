@@ -10,9 +10,14 @@
 <link rel='stylesheet' href='styles.css'>
 
 <h1 class = 'WCheader'> FIFA World Cup 2022 Simulator </h1>
+<img src="world cup trophy.png" class="worldcuptrophy_img" alt="world cup trophy">
+<img src="silver medal.png" class="silvermedal_img" alt="world cup trophy">
+<img src="bronze medal.png" class="bronzemedal_img" alt="world cup trophy">
 
 <?php 
   require_once "login.php";
+
+
     /* Udskriver grupperne */ 
     $groups = array("A", "B", "C", "D", "E", "F", "G", "H");
     foreach ($groups as $value){
@@ -121,10 +126,29 @@
     echo " </table>";
     echo "</div>";
 
+    /* Udskriver Odds-tabel */
+    echo "<div class='Odds table'>";
+    $sql_query = "SELECT winner, count(*) AS no_of_wins, 
+                                 count(*)/(SELECT count(*) FROM vmsimulator.simulation_results WHERE MatchID=64) AS pct, 
+                                 (SELECT count(*) FROM vmsimulator.simulation_results WHERE MatchID=64)/count(*) AS odds
+                  FROM vmsimulator.simulation_results
+                  WHERE MatchID=64
+                  GROUP BY winner
+                  ORDER BY no_of_wins DESC";
+    $result = $conn->query($sql_query);
+    echo "<table> <tr> <th></th> <th>Number of wins</th> <th>Probability of winning</th> <th>Fair odds</th> </tr>";
+    while ($row = $result->fetch_assoc())
+    {
+        echo "<tr> <td> " . $row['winner'] . " </td><td> " . $row['no_of_wins'] . "</td> <td>" . $row['pct'] . "</td> <td>" . $row['odds'] . "</td> </tr>" ;
+    }
+    echo " </table>";
+    echo "</div>";
+
+
     echo "<form class=simButton action='runSimulation.php'>";
     echo "<input type='submit' value='Start simulation'>";
     echo "</form>";
-    
+        
     
 ?>
 </body>

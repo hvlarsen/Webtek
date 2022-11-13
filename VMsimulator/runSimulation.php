@@ -10,6 +10,10 @@
 <link rel='stylesheet' href='styles.css'>
 
 <h1 class = 'WCheader'> FIFAWorld Cup 2022 Simulator </h1>
+<img src="world cup trophy.png" class="worldcuptrophy_img" alt="world cup trophy">
+<img src="silver medal.png" class="silvermedal_img" alt="world cup trophy">
+<img src="bronze medal.png" class="bronzemedal_img" alt="world cup trophy">
+
 <?php
    global $conn;
    require_once "login.php";
@@ -150,7 +154,6 @@
     echo "</div>";
 
     /* Udskriver Top 3 */
-    echo "<div class='Result'>";
     $sql_query = "SELECT a.winner as gold, a.loser as silver, b.winner as bronze
                   FROM (SELECT winner, loser 
                         FROM simulation_results
@@ -161,11 +164,32 @@
                         WHERE SimulationID = " . $SimulationID . "  
                         AND matchid=63) b";
     $result = $conn->query($sql_query);
-    echo "<table> <tr> <th></th>  <th></th> <th></th> </tr>";
     while ($row = $result->fetch_assoc())
     {
-       echo " <tr> <td> Gold: " . $row['gold'] . "</td> <td>  Silver: " . $row['silver'] . "</td> <td> Bronze: " . $row['bronze'] . "</td> </tr>" ;
+      $winner = $row['gold'];
+      $silver = $row['silver'];
+      $bronze = $row['bronze'];
     }           
+
+    Echo "<h1 class = 'winner'> " . $winner . "</h1>";
+    Echo "<h1 class = 'silver'> " . $silver . "</h1>";
+    Echo "<h1 class = 'bronze'> " . $bronze . "</h1>";
+
+    /* Udskriver Odds-tabel */
+    echo "<div class='Oddstable'>";
+    $sql_query = "SELECT winner, count(*) AS no_of_wins, 
+                                 count(*)/(SELECT count(*) FROM vmsimulator.simulation_results WHERE MatchID=64) AS pct, 
+                                 (SELECT count(*) FROM vmsimulator.simulation_results WHERE MatchID=64)/count(*) AS odds
+                  FROM vmsimulator.simulation_results
+                  WHERE MatchID=64
+                  GROUP BY winner
+                  ORDER BY no_of_wins DESC";
+    $result = $conn->query($sql_query);
+    echo "<table> <tr> <th></th> <th>Number of wins</th> <th>Probability of winning</th> <th>Fair odds</th> </tr>";
+    while ($row = $result->fetch_assoc())
+    {
+        echo "<tr> <td> " . $row['winner'] . " </td><td class='rightalign'> " . $row['no_of_wins'] . "</td> <td class='rightalign'>" . $row['pct'] . "</td> <td class='rightalign'>" . $row['odds'] . "</td> </tr>" ;
+    }
     echo " </table>";
     echo "</div>";
 

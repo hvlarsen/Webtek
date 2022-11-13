@@ -5,7 +5,12 @@ html * {
     font-family: Verdana, sans-serif;
  }
 
+ .rightalign{text-align:right}
+
 .WCheader{position:absolute; top: 0px; left:490px; font-size: 50px;}
+.worldcuptrophy_img{position:absolute; top: 400px; left:470px}
+.silvermedal_img{position:absolute; top: 650px; left:270px}
+.bronzemedal_img{position:absolute; top: 650px; left:780px}
 
 .GroupA {position:absolute; top: 100px; left:30px}
 .GroupB {position:absolute; top: 100px; left:255px}
@@ -38,6 +43,10 @@ html * {
 .headerFinals {position:absolute; top:815px; left:30px }
 .Finals {position:absolute; top: 840px; left:30px}
 
-.Result {position:absolute; top: 840px; left:630px}
+.winner {position:absolute; top: 840px; left:540px;  font-size: 20px; text-align: center}
+.silver {position:absolute; top: 840px; left:315px;  font-size: 20px; text-align: center}
+.bronze {position:absolute; top: 840px; left:778px;  font-size: 20px; text-align: center}
+
+.Oddstable{position:absolute; top: 400px; left:1100px}
 
 .simButton {position:absolute; top: 930px; left:30px}
