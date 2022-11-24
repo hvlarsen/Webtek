@@ -4,7 +4,7 @@
     public $team1, $team2;
     public $goals1, $goals2;
 
-    /* contructor funktion, der sætter de to teamnavne */
+    /* contructor funktion, der sætter de to teams (team-objekter!) */
     function __construct($team1, $team2)
     {
       $this->team1 = $team1;
@@ -40,10 +40,10 @@
     {
       /* Opdaterer simulation_results tabellen */
       $sql_query = "UPDATE simulation_results SET goals1 = " . $this->goals1 . ", goals2 = " . $this->goals2 . ", played = 1 " . 
-                   "where Team1 = '" . $this->team1->name . "' and Team2 = '" . $this->team2->name . "' AND SimulationID = " . $SimulationID . ";";
+      "where Team1 = '" . $this->team1->name . "' and Team2 = '" . $this->team2->name . "' AND SimulationID = " . $SimulationID . ";";
       $conn->query($sql_query);
 
-      /* !!! Der skal gøres et eller andet her, så det ikke altid er Team1 der er vinderen ved uafgjort (forlænget spilletid og straffe)*/
+      /* !!! Der skal gøres et eller andet her, så det ikke altid er Team2 der er vinderen ved uafgjort (forlænget spilletid og straffe)*/
       if ($this->goals1 > $this->goals2)
       {
         $winner = $this->team1->name;
@@ -67,11 +67,11 @@
                             " . $this->goals1 . ", " . $this->goals2 . ");"; 
       $conn->query($sql_query);
       $sql_query = "INSERT INTO team_points (SimulationID, Team, Points, Goals_for, Goals_against) 
-      VALUES (" . $SimulationID . ", '" . $this->team2->name . "', " . (($this->goals1 < $this->goals2)*3 + ($this->goals1 == $this->goals2)*1). ",
-              " . $this->goals2 . ", " . $this->goals1 . ");"; 
+                    VALUES (" . $SimulationID . ", '" . $this->team2->name . "', " . (($this->goals1 < $this->goals2)*3 + ($this->goals1 == $this->goals2)*1). ",
+                          " . $this->goals2 . ", " . $this->goals1 . ");"; 
       $conn->query($sql_query);
 
-      /* Opdaterer team_strength tabellen */
+      /* TODO: Opdaterer team_strength tabellen */
     }
   }
 ?>

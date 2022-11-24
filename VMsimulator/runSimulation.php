@@ -31,20 +31,20 @@
     $groups = array("A", "B", "C", "D", "E", "F", "G", "H");
     foreach ($groups as $value){
         echo "<div class='Group" . $value . "'>";
-        $sql_query = "SELECT a.Team, sum(Goals_for - Goals_against) as goaldiff, sum(Points) as points
+        $sql_query = "SELECT teamname, sum(Goals_for - Goals_against) as goaldiff, sum(Points) as points
                       FROM team_points a,
                            teams b
                       WHERE a.Team = b.Team
                       AND SimulationID = " . $SimulationID . "  
                       AND Groupname = '" . $value . "'
-                      GROUP BY a.Team
+                      GROUP BY teamname
                       ORDER BY points desc, goaldiff desc";
         $result = $conn->query($sql_query);
         echo "Group "."$value <br>";
         echo "<table> <tr> <th> </th> <th>GD</th> <th>points</th> </tr>";
         while ($row = $result->fetch_assoc())
         {
-          echo "<tr> <td> " .$row['Team'] . " </td> <td> " .$row['goaldiff'] . " </td> <td> " .$row['points'] . " </td> </tr>" ;
+          echo "<tr> <td> " .$row['teamname'] . " </td> <td> " .$row['goaldiff'] . " </td> <td> " .$row['points'] . " </td> </tr>" ;
         }
         echo " </table>";
         echo "</div>";
@@ -54,11 +54,13 @@
     $groups = array("A", "B", "C", "D", "E", "F", "G", "H");
     foreach ($groups as $value){
         echo "<div class='Groupmatches" . $value . "'>";
-        $sql_query = "SELECT a.Team1, a.Team2, goals1, goals2
+        $sql_query = "SELECT b.teamname as Team1, c.teamname as Team2, goals1, goals2
                       FROM simulation_results a,
-                           teams b
+                           teams b,
+                           teams c
                       WHERE SimulationID = " . $SimulationID . "  
                       AND a.Team1 = b.Team
+                      AND a.Team2 = c.team
                       AND RoundNumber in ('1', '2', '3')
                       AND b.Groupname = '" . $value . "'
                       ORDER BY MatchID";
@@ -71,98 +73,72 @@
         echo " </table>";
         echo "</div>";
     }
+
+    /* Generel funktion, der udskriver knockout-runderne */
+    function write_round($round,$conn, $SimulationID)
+    {
+        $sql_query = "SELECT b.teamname as Team1, c.teamname as Team2, goals1, goals2
+        FROM simulation_results a,
+             teams b,
+             teams c
+        WHERE SimulationID = " . $SimulationID . "  
+        AND a.Team1 = b.Team
+        AND a.Team2 = c.team
+        AND RoundNumber in ('" . $round . "')
+        ORDER BY MatchID";
+        $result = $conn->query($sql_query);
+        echo "<table> <tr> <th></th> <th></th> <th></th> <th></th> <th></th> <th></th> </tr>";
+        while ($row = $result->fetch_assoc())
+        {
+           echo "<tr> <td> " . $row['Team1'] . " </td> <td> " . $row['goals1'] . " </td> <td> - </td> <td> " . $row['goals2'] . " </td> <td> " . $row['Team2'] . "</td> </tr>" ;
+        }
+        echo " </table>";
+    }
+
     $sim->simulate_round("Round of 16", $conn);
     /* Udskriver Round of 16 */
     Echo "<h1 class = 'headerRoundOf16Matches'> Round of 16 </h1>";
     echo "<div class='RoundOf16Matches'>";
-    $sql_query = "SELECT a.Team1, a.Team2, goals1, goals2
-                  FROM simulation_results a,
-                       teams b
-                  WHERE SimulationID = " . $SimulationID . "  
-                  AND a.Team1 = b.Team
-                  AND RoundNumber in ('Round of 16')
-                  ORDER BY MatchID";
-    $result = $conn->query($sql_query);
-    echo "<table> <tr> <th></th> <th></th> <th></th> <th></th> <th></th> <th></th> </tr>";
-    while ($row = $result->fetch_assoc())
-    {
-        echo "<tr> <td> " . $row['Team1'] . " </td> <td> " . $row['goals1'] . " </td> <td> - </td> <td> " . $row['goals2'] . " </td> <td> " . $row['Team2'] . "</td> </tr>" ;
-    }
-    echo " </table>";
+    write_round('Round of 16', $conn, $SimulationID);
     echo "</div>";
 
     $sim->simulate_round("Quarter Finals", $conn);
     /* Udskriver Quarter Finals */
     Echo "<h1 class = 'headerQuarterFinals'> Quarter Finals </h1>";
     echo "<div class='QuarterFinals'>";
-    $sql_query = "SELECT a.Team1, a.Team2, goals1, goals2
-                  FROM simulation_results a,
-                       teams b
-                  WHERE SimulationID = " . $SimulationID . "  
-                  AND a.Team1 = b.Team
-                  AND RoundNumber in ('Quarter Finals')
-                  ORDER BY MatchID";
-    $result = $conn->query($sql_query);
-    echo "<table> <tr> <th></th> <th></th> <th></th> <th></th> <th></th> <th></th> </tr>";
-    while ($row = $result->fetch_assoc())
-    {
-        echo "<tr> <td> " . $row['Team1'] . " </td> <td> " . $row['goals1'] . " </td> <td> - </td> <td> " . $row['goals2'] . " </td> <td> " . $row['Team2'] . "</td> </tr>" ;
-    }
-    echo " </table>";
+    write_round('Quarter Finals', $conn, $SimulationID);
     echo "</div>";
 
     $sim->simulate_round("Semi Finals", $conn);
-
     /* Udskriver Semi Finals */
     Echo "<h1 class = 'headerSemiFinals'> Semi Finals </h1>";
     echo "<div class='SemiFinals'>";
-    $sql_query = "SELECT a.Team1, a.Team2, goals1, goals2
-                  FROM simulation_results a,
-                       teams b
-                  WHERE SimulationID = " . $SimulationID . "  
-                  AND a.Team1 = b.Team
-                  AND RoundNumber in ('Semi Finals')
-                  ORDER BY MatchID";
-    $result = $conn->query($sql_query);
-    echo "<table> <tr> <th></th> <th></th> <th></th> <th></th> <th></th> <th></th> </tr>";
-    while ($row = $result->fetch_assoc())
-    {
-        echo "<tr> <td> " . $row['Team1'] . " </td> <td> " . $row['goals1'] . " </td> <td> - </td> <td> " . $row['goals2'] . " </td> <td> " . $row['Team2'] . "</td> </tr>" ;
-    }
-    echo " </table>";
+    write_round('Semi Finals', $conn, $SimulationID);
     echo "</div>";
 
     $sim->simulate_round("Finals", $conn);
-
     /* Udskriver Finals */
     Echo "<h1 class = 'headerFinals'> Finals </h1>";
     echo "<div class='Finals'>";
-    $sql_query = "SELECT a.Team1, a.Team2, goals1, goals2
-                  FROM simulation_results a,
-                       teams b
-                  WHERE SimulationID = " . $SimulationID . "  
-                  AND a.Team1 = b.Team
-                  AND RoundNumber in ('Semi Finals')
-                  ORDER BY MatchID";
-    $result = $conn->query($sql_query);
-    echo "<table> <tr> <th></th> <th></th> <th></th> <th></th> <th></th> <th></th> </tr>";
-    while ($row = $result->fetch_assoc())
-    {
-        echo "<tr> <td> " . $row['Team1'] . " </td> <td> " . $row['goals1'] . " </td> <td> - </td> <td> " . $row['goals2'] . " </td> <td> " . $row['Team2'] . "</td> </tr>" ;
-    }
-    echo " </table>";
+    write_round('Finals', $conn, $SimulationID);
     echo "</div>";
 
     /* Udskriver Top 3 */
     $sql_query = "SELECT a.winner as gold, a.loser as silver, b.winner as bronze
-                  FROM (SELECT winner, loser 
-                        FROM simulation_results
-                        WHERE SimulationID = " . $SimulationID . "  
-                        AND matchid=64) a
-                  JOIN (SELECT winner
-                        FROM simulation_results
-                        WHERE SimulationID = " . $SimulationID . "  
-                        AND matchid=63) b";
+                  FROM (SELECT b.teamname as winner, c.teamname as loser 
+                        FROM simulation_results a,
+                             teams b,
+                             teams c
+                        WHERE SimulationID = " . $SimulationID . "
+                        AND matchid=64
+                        AND winner = b.team
+                        and loser = c.team) a
+                  JOIN (SELECT b.teamname as winner
+                        FROM simulation_results a,
+                            teams b
+                        WHERE SimulationID = " . $SimulationID . " 
+                        AND matchid=63
+                        AND winner = b.team) b";
     $result = $conn->query($sql_query);
     while ($row = $result->fetch_assoc())
     {
@@ -177,12 +153,16 @@
 
     /* Udskriver Odds-tabel */
     echo "<div class='Oddstable'>";
-    $sql_query = "SELECT winner, count(*) AS no_of_wins, 
-                                 count(*)/(SELECT count(*) FROM vmsimulator.simulation_results WHERE MatchID=64) AS pct, 
-                                 (SELECT count(*) FROM vmsimulator.simulation_results WHERE MatchID=64)/count(*) AS odds
-                  FROM vmsimulator.simulation_results
-                  WHERE MatchID=64
-                  GROUP BY winner
+    $sql_query = "SELECT b.teamname as winner, no_of_wins, pct, odds
+                  FROM (SELECT winner, count(*) AS no_of_wins, 
+                               count(*)/(SELECT count(*) FROM vmsimulator.simulation_results WHERE MatchID=64) AS pct, 
+                               (SELECT count(*) FROM vmsimulator.simulation_results WHERE MatchID=64)/count(*) AS odds
+                        FROM vmsimulator.simulation_results
+                        WHERE MatchID=64
+                        GROUP BY winner
+                        ) a,
+                        teams b
+                  WHERE a.winner = b.team
                   ORDER BY no_of_wins DESC";
     $result = $conn->query($sql_query);
     echo "<table> <tr> <th></th> <th>Number of wins</th> <th>Probability of winning</th> <th>Fair odds</th> </tr>";

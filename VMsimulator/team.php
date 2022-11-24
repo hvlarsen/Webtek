@@ -11,13 +11,14 @@
     {
       $this->conn = $conn;
       $this->name = $name;
-      // $this->strength = array($attack, $defense);
     }
 
     /* Funktion, der loader team strength fra databasen */   
     function load_strength($conn)
     {
-      $sql_query = "SELECT AttackPower, DefensePower FROM team_strength where team= '" . $this->name . "';";
+      $sql_query = "SELECT AttackPower, DefensePower 
+                    FROM team_strength 
+                    WHERE team = '" . $this->name . "';";
       // echo $sql_query;
       $result = $conn->query($sql_query);
       while ($row = $result->fetch_assoc())
@@ -39,7 +40,8 @@
       return $this->defense;
     }
 
-    /* Method der opdaterer strength array efter en match */ 
+    /* Method der opdaterer strength array efter en match. */
+    /* TODO: Lav team_strength tabel der indeholder den opdaterede strength for hver simulationID */ 
     function update_strength($match)
     {
       $strength = array(1.0,0.5);
