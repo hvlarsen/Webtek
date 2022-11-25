@@ -40,11 +40,11 @@
       return $this->defense;
     }
 
-    /* Method der opdaterer strength array efter en match. */
+    /* Method der opdaterer attack of defense efter en match. */
     /* TODO: Lav team_strength tabel der indeholder den opdaterede strength for hver simulationID */ 
     function update_strength($match)
     {
-      $strength = array(1.0,0.5);
+      /* Opdater $attack og $defense på baggrund af kampens udfald */ 
     } 
   }
 ?>
