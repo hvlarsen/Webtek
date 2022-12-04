@@ -34,17 +34,11 @@
                       '" . $row['Team1_source'] . "', '" . $row['Team2_source'] . "');";
         $conn->query($sql_query);
       }
-
-      /* Nulstiller points i alle grupper*/
-      $sql_query = "SELECT * 
-                    FROM matches;";
-      $result = $conn->query($sql_query);
     }
 
     /* Method, der simulerer resultaterne af gruppekampe */   
     function simulate_round($round, $conn) /* round in ("1", "2", "3", "Round of 16", "Quarter Finals", "Semi Finals", "Finals") */
     {
-      // echo "<br>" . $round . "<br>";
       /* Finder rundens kampe */
       $matches = array();
       $sql_query = "SELECT Matchid 

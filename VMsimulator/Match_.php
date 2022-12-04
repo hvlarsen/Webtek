@@ -4,7 +4,7 @@
     public $team1, $team2;
     public $goals1, $goals2;
 
-    /* contructor funktion, der sætter de to teams (team-objekter!) */
+    /* contructor funktion, der sætter de to teams (team-objekter) */
     function __construct($team1, $team2)
     {
       $this->team1 = $team1;

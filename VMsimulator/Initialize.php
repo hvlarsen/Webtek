@@ -17,12 +17,11 @@
 <?php 
   require_once "login.php";
 
-
     /* Udskriver grupperne */ 
     $groups = array("A", "B", "C", "D", "E", "F", "G", "H");
     foreach ($groups as $value){
         echo "<div class='Group" . $value . "'>";
-        $sql_query = "SELECT b.teamname, '0' as goaldiff, /*sum(Goals_for - Goals_against) as goaldiff, sum(Points)*/ '0' as points
+        $sql_query = "SELECT b.teamname, '0' as goaldiff, '0' as goals_for, '0' as goals_against,  '0' as points
                       FROM team_points a,
                            teams b
                       WHERE a.Team = b.Team
@@ -30,11 +29,10 @@
                       GROUP BY a.Team
                       ORDER BY points desc, goaldiff desc";
         $result = $conn->query($sql_query);
-        echo "Group "."$value <br>";
-        echo "<table> <tr> <th> </th> <th>GD</th> <th>P</th> </tr>";
+        echo "<table> <caption><b><u> Group " . $value . "</u></b></caption> <tr> <th></th> <th>GF</th> <th>GA</th> <th>GD</th><th>Points</th> </tr>";
         while ($row = $result->fetch_assoc())
         {
-          echo "<tr> <td> " .$row['teamname'] . " </td> <td> " .$row['goaldiff'] . " </td> <td> " .$row['points'] . " </td> </tr>" ;
+          echo "<tr> <td> " .$row['teamname'] . " </td> <td class='rightalign'> " . $row['goals_for'] . " </td> <td class='rightalign'> " . $row['goals_against'] . " </td> <td class='rightalign'> " . $row['goaldiff'] . " </td> <td class='rightalign'> " .$row['points'] . " </td> </tr>" ;
         }
         echo " </table>";
         echo "</div>";
@@ -55,10 +53,10 @@
                       AND b.Groupname = '" . $value . "'
                       ORDER BY Date";
         $result = $conn->query($sql_query);
-        echo "<table> <tr> <th></th> <th></th> <th></th> </tr>";
+        echo "<table> <caption>_______________________</caption><tr> <th></th> <th></th> <th></th> </tr>";
         while ($row = $result->fetch_assoc())
         {
-          echo "<tr> <td> " . $row['Team1'] . " </td> <td> _ - _ </td> <td> " . $row['Team2'] . "</td> </tr>" ;
+          echo "<tr> <td class='rightalign'> " . $row['Team1'] . " </td> <td> _ - _ </td> <td> " . $row['Team2'] . "</td> </tr>" ;
         }
         echo " </table>";
         echo "</div>";
@@ -72,7 +70,7 @@
                       WHERE RoundNumber = '" . $round . "'
                       ORDER BY Date";
         $result = $conn->query($sql_query);
-        echo "<table> <tr> <th></th> <th></th> <th></th> <th></th> <th></th> <th></th> </tr>";
+        echo "<table> <caption><b><u>" . $round . "</b></u></caption><tr> <th></th> <th></th> <th></th> <th></th> <th></th> <th></th> </tr>";
         while ($row = $result->fetch_assoc())
         {
             echo "<tr> <td> " . $row['MatchID'] . " </td><td> " . $row['Team1_source'] . "</td> <td> _ - _ </td> <td> " . $row['Team2_source'] . "</td> </tr>" ;
@@ -81,25 +79,21 @@
     }
     
     /* Udskriver Round of 16 */
-    Echo "<h1 class = 'headerRoundOf16Matches'> Round of 16 </h1>";
     echo "<div class='RoundOf16Matches'>";
     write_round('Round of 16',$conn);
     echo "</div>";
 
     /* Udskriver Quarter Finals */
-    Echo "<h1 class = 'headerQuarterFinals'> Quarter Finals </h1>";
     echo "<div class='QuarterFinals'>";
     write_round('Quarter Finals',$conn);
     echo "</div>";
 
     /* Udskriver Semi Finals */
-    Echo "<h1 class = 'headerSemiFinals'> Semi Finals </h1>";
     echo "<div class='SemiFinals'>";
     write_round('Semi Finals',$conn);
     echo "</div>";
 
     /* Udskriver Finals */
-    Echo "<h1 class = 'headerFinals'> Finals </h1>";
     echo "<div class='Finals'>";
     write_round('Finals',$conn);
     echo "</div>";
@@ -116,7 +110,8 @@
                         ) a,
                         teams b
                   WHERE a.winner = b.team
-                  ORDER BY no_of_wins DESC";
+                  ORDER BY no_of_wins DESC
+                  LIMIT 20";
     $result = $conn->query($sql_query);
     echo "<table> <tr> <th></th> <th>Number of wins</th> <th>Probability of winning</th> <th>Fair odds</th> </tr>";
     while ($row = $result->fetch_assoc())
@@ -129,8 +124,7 @@
     echo "<form class=simButton action='runSimulation.php'>";
     echo "<input type='submit' value='Start simulation'>";
     echo "</form>";
-       
-    
+     
 ?>
 </body>
 </html>

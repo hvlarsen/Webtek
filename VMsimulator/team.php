@@ -2,10 +2,8 @@
   class team
   {
     public $name;
-    public $attack, $defense;
-    // private $conn;
-
-    
+    private $attack, $defense;
+      
     /* contrutor funktion, der sætter name og strength */
     function __construct($name, $conn)
     {
@@ -44,7 +42,7 @@
     /* TODO: Lav team_strength tabel der indeholder den opdaterede strength for hver simulationID */ 
     function update_strength($match)
     {
-      /* Opdater $attack og $defense på baggrund af kampens udfald */ 
+      /* TODO: Opdater $attack og $defense på baggrund af kampens udfald */ 
     } 
   }
 ?>

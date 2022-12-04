@@ -8,45 +8,41 @@ html * {
  .rightalign{text-align:right}
 
 .WCheader{position:absolute; top: 0px; left:490px; font-size: 50px;}
-.worldcuptrophy_img{position:absolute; top: 400px; left:470px}
-.silvermedal_img{position:absolute; top: 650px; left:270px}
-.bronzemedal_img{position:absolute; top: 650px; left:780px}
+.worldcuptrophy_img{position:absolute; top: 400px; left:670px}
+.silvermedal_img{position:absolute; top: 650px; left:470px}
+.bronzemedal_img{position:absolute; top: 650px; left:980px}
 
-.GroupA {position:absolute; top: 100px; left:30px}
-.GroupB {position:absolute; top: 100px; left:255px}
-.GroupC {position:absolute; top: 100px; left:480px}
-.GroupD {position:absolute; top: 100px; left:705px}
-.GroupE {position:absolute; top: 100px; left:930px}
-.GroupF {position:absolute; top: 100px; left:1155px}
-.GroupG {position:absolute; top: 100px; left:1380px}
-.GroupH {position:absolute; top: 100px; left:1605px}
+.GroupA {position:absolute; top: 100px; left:30px; width: 229px; background-color: #005391}
+.GroupB {position:absolute; top: 100px; left:260px; width: 229px;  background-color: #005391}
+.GroupC {position:absolute; top: 100px; left:490px; width: 229px;  background-color: #005391}
+.GroupD {position:absolute; top: 100px; left:720px; width: 229px;  background-color: #005391}
+.GroupE {position:absolute; top: 100px; left:950px; width: 229px;  background-color: #005391}
+.GroupF {position:absolute; top: 100px; left:1180px; width: 229px;  background-color: #005391}
+.GroupG {position:absolute; top: 100px; left:1410px; width: 229px;  background-color: #005391}
+.GroupH {position:absolute; top: 100px; left:1640px; width: 229px;  background-color: #005391}
 
 /*.headerGroupMatches {position:absolute; left:30px; top:120px}*/
-.GroupmatchesA {position:absolute; top: 230px; left:30px}
-.GroupmatchesB {position:absolute; top: 230px; left:255px}
-.GroupmatchesC {position:absolute; top: 230px; left:480px}
-.GroupmatchesD {position:absolute; top: 230px; left:705px}
-.GroupmatchesE {position:absolute; top: 230px; left:930px}
-.GroupmatchesF {position:absolute; top: 230px; left:1155px}
-.GroupmatchesG {position:absolute; top: 230px; left:1380px}
-.GroupmatchesH {position:absolute; top: 230px; left:1605px}
+.GroupmatchesA {position:absolute; top: 230px; left:30px; width: 229px; background-color: #005391}
+.GroupmatchesB {position:absolute; top: 230px; left:260px; width: 229px;  background-color: #005391}
+.GroupmatchesC {position:absolute; top: 230px; left:490px; width: 229px;  background-color: #005391}
+.GroupmatchesD {position:absolute; top: 230px; left:720px; width: 229px;  background-color: #005391}
+.GroupmatchesE {position:absolute; top: 230px; left:950px; width: 229px;  background-color: #005391}
+.GroupmatchesF {position:absolute; top: 230px; left:1180px; width: 229px;  background-color: #005391}
+.GroupmatchesG {position:absolute; top: 230px; left:1410px; width: 229px;  background-color: #005391}
+.GroupmatchesH {position:absolute; top: 230px; left:1640px; width: 229px;  background-color: #005391}
 
-.headerRoundOf16Matches {position:absolute; top:385px; left:30px}
-.RoundOf16Matches {position:absolute; top: 410px; left:30px}
+.RoundOf16Matches {position:absolute; top: 410px; left:30px; width: 229px; background-color: #005391}
 
-.headerQuarterFinals {position:absolute; top:605px; left:30px }
-.QuarterFinals {position:absolute; top: 630px; left:30px}
+.QuarterFinals {position:absolute; top: 630px; left:30px; width: 229px; background-color: #005391}
 
-.headerSemiFinals {position:absolute; top:735px; left:30px }
-.SemiFinals {position:absolute; top: 760px; left:30px}
+.SemiFinals {position:absolute; top: 760px; left:30px; width: 229px; background-color: #005391}
 
-.headerFinals {position:absolute; top:815px; left:30px }
-.Finals {position:absolute; top: 840px; left:30px}
+.Finals {position:absolute; top: 840px; left:30px; width: 229px; background-color: #005391}
 
-.winner {position:absolute; top: 840px; left:540px;  font-size: 20px; text-align: center}
-.silver {position:absolute; top: 840px; left:315px;  font-size: 20px; text-align: center}
-.bronze {position:absolute; top: 840px; left:778px;  font-size: 20px; text-align: center}
+.winner {position:absolute; top: 840px; left:740px;  font-size: 20px; text-align: center}
+.silver {position:absolute; top: 840px; left:515px;  font-size: 20px; text-align: center}
+.bronze {position:absolute; top: 840px; left:978px;  font-size: 20px; text-align: center}
 
-.Oddstable{position:absolute; top: 400px; left:1100px}
+.Oddstable{position:absolute; top: 400px; left:1410px; background-color: #005391}
 
 .simButton {position:absolute; top: 930px; left:30px}
