@@ -3,16 +3,27 @@
     <head>
         <meta charset="utf-8">
         <meta name="author" content="Hans Larsen">
-        <title>World Cup simulator</title>
+        <title>FIFA World Cup 2022 Simulator</title>
     </head>
 <body>
 
 <link rel='stylesheet' href='styles.css'>
 
 <h1 class = 'WCheader'> FIFA World Cup 2022 Simulator </h1>
+<figure class='worldcuptrophy_figure'>
 <img src="world cup trophy.png" class="worldcuptrophy_img" alt="world cup trophy">
+<figcaption>  </figcaption>
+</figure>;
+
+<figure class='silvermedal_figure'>
 <img src="silver medal.png" class="silvermedal_img" alt="world cup trophy">
+<figcaption>  </figcaption>
+</figure>;
+
+<figure class='bronzemedal_figure'>
 <img src="bronze medal.png" class="bronzemedal_img" alt="world cup trophy">
+<figcaption>  </figcaption>
+</figure>;
 
 <?php 
   require_once "login.php";
@@ -53,14 +64,15 @@
                       AND b.Groupname = '" . $value . "'
                       ORDER BY Date";
         $result = $conn->query($sql_query);
-        echo "<table> <caption>_______________________</caption><tr> <th></th> <th></th> <th></th> </tr>";
+        echo "<table> <caption>________________________</caption><tr> <th></th> <th></th> <th></th> </tr>";
         while ($row = $result->fetch_assoc())
         {
-          echo "<tr> <td class='rightalign'> " . $row['Team1'] . " </td> <td> _ - _ </td> <td> " . $row['Team2'] . "</td> </tr>" ;
+          echo "<tr> <td> " . $row['Team1'] . " </td> <td> _ - _ </td> <td> " . $row['Team2'] . "</td> </tr>" ;
         }
         echo " </table>";
         echo "</div>";
     }
+    
 
     /* Generel funktion, der udskriver knockout-runderne */
     function write_round($round,$conn)

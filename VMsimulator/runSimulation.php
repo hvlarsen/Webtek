@@ -3,16 +3,13 @@
     <head>
         <meta charset="utf-8">
         <meta name="author" content="Hans Larsen">
-        <title>World Cup simulator</title>
+        <title>FIFA World Cup 2022 Simulator</title>
     </head>
 <body>
 
 <link rel='stylesheet' href='styles.css'>
 
-<h1 class = 'WCheader'> FIFAWorld Cup 2022 Simulator </h1>
-<img src="world cup trophy.png" class="worldcuptrophy_img" alt="world cup trophy">
-<img src="silver medal.png" class="silvermedal_img" alt="world cup trophy">
-<img src="bronze medal.png" class="bronzemedal_img" alt="world cup trophy">
+<h1 class = 'WCheader'> FIFA World Cup 2022 Simulator </h1>
 
 <?php
    global $conn;
@@ -64,7 +61,7 @@
                       AND b.Groupname = '" . $value . "'
                       ORDER BY MatchID";
         $result = $conn->query($sql_query);
-        echo "<table> <tr> <th></th> <th></th> <th></th> <th></th> <th></th> <th></th> </tr>";
+        echo "<table> <caption>________________________</caption><tr> <th></th> <th></th> <th></th> <th></th> <th></th> <th></th> </tr>";
         while ($row = $result->fetch_assoc())
         {
           echo "<tr> <td> " . $row['Team1'] . " </td> <td> " . $row['goals1'] . " </td> <td> - </td> <td> " . $row['goals2'] . " </td> <td> " . $row['Team2'] . "</td> </tr>" ;
@@ -141,11 +138,22 @@
       $silver = $row['silver'];
       $bronze = $row['bronze'];
     }           
+    
+    Echo "<figure class='worldcuptrophy_figure'>";
+    Echo "<img src='world cup trophy.png' alt='world cup trophy'>";
+    Echo "<figcaption> " . $winner . " </figcaption>";
+    echo "</figure>";
 
-    Echo "<h1 class = 'winner'> " . $winner . "</h1>";
-    Echo "<h1 class = 'silver'> " . $silver . "</h1>";
-    Echo "<h1 class = 'bronze'> " . $bronze . "</h1>";
+    Echo "<figure class='silvermedal_figure'>";
+    Echo "<img src='silver medal.png' alt='world cup trophy'>";
+    Echo "<figcaption> " . $silver . " </figcaption>";
+    echo "</figure>";
 
+    Echo "<figure class='bronzemedal_figure'>";
+    Echo "<img src='bronze medal.png' alt='world cup trophy'>";
+    Echo "<figcaption> " . $bronze . " </figcaption>";
+    echo "</figure>";
+    
     /* Udskriver Odds-tabel */
     echo "<div class='Oddstable'>";
     $sql_query = "SELECT b.teamname as winner, no_of_wins, pct, odds
@@ -161,10 +169,10 @@
                   ORDER BY no_of_wins DESC
                   LIMIT 20";
     $result = $conn->query($sql_query);
-    echo "<table> <tr> <th></th> <th>Number of wins</th> <th>Probability of winning</th> <th>Fair odds</th> </tr>";
+    echo "<table> <tr> <th width='50px'></th> <th width='100px'>Number of wins</th> <th width='150px'>Probability of winning</th> <th>Fair odds</th> </tr>";
     while ($row = $result->fetch_assoc())
     {
-        echo "<tr> <td> " . $row['winner'] . " </td><td class='rightalign'> " . $row['no_of_wins'] . "</td> <td class='rightalign'>" . $row['pct'] . "</td> <td class='rightalign'>" . $row['odds'] . "</td> </tr>" ;
+        echo "<tr> <td> " . $row['winner'] . " </td><td class='centeralign'> " . $row['no_of_wins'] . "</td> <td class='centeralign'>" . number_format(100*$row['pct'],1) . "%</td> <td class='rightalign'>" . number_format($row['odds'],2) . "</td> </tr>" ;
     }
     echo " </table>";
     echo "</div>";

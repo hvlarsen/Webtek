@@ -5,12 +5,16 @@ html * {
     font-family: Verdana, sans-serif;
  }
 
+ img{ display: block; margin-left: auto; margin-right: auto;}
+ figcaption{text-align:center; font-weight: bold}
  .rightalign{text-align:right}
+ .centeralign{text-align:center}
 
-.WCheader{position:absolute; top: 0px; left:490px; font-size: 50px;}
-.worldcuptrophy_img{position:absolute; top: 400px; left:670px}
-.silvermedal_img{position:absolute; top: 650px; left:470px}
-.bronzemedal_img{position:absolute; top: 650px; left:980px}
+.WCheader{position:absolute; top: 0px; left:540px; font-size: 50px;}
+.worldcuptrophy_figure{position:absolute; top: 400px; left:720px}
+.silvermedal_figure{position:absolute; top: 665px; left:520px}
+.bronzemedal_figure{position:absolute; top: 665px; left:1030px}
+
 
 .GroupA {position:absolute; top: 100px; left:30px; width: 229px; background-color: #005391}
 .GroupB {position:absolute; top: 100px; left:260px; width: 229px;  background-color: #005391}
@@ -21,7 +25,6 @@ html * {
 .GroupG {position:absolute; top: 100px; left:1410px; width: 229px;  background-color: #005391}
 .GroupH {position:absolute; top: 100px; left:1640px; width: 229px;  background-color: #005391}
 
-/*.headerGroupMatches {position:absolute; left:30px; top:120px}*/
 .GroupmatchesA {position:absolute; top: 230px; left:30px; width: 229px; background-color: #005391}
 .GroupmatchesB {position:absolute; top: 230px; left:260px; width: 229px;  background-color: #005391}
 .GroupmatchesC {position:absolute; top: 230px; left:490px; width: 229px;  background-color: #005391}
@@ -39,10 +42,10 @@ html * {
 
 .Finals {position:absolute; top: 840px; left:30px; width: 229px; background-color: #005391}
 
-.winner {position:absolute; top: 840px; left:740px;  font-size: 20px; text-align: center}
+.winner {position:absolute; top: 840px; left:720px; width:400; font-size: 20px; text-align: center}
 .silver {position:absolute; top: 840px; left:515px;  font-size: 20px; text-align: center}
 .bronze {position:absolute; top: 840px; left:978px;  font-size: 20px; text-align: center}
 
-.Oddstable{position:absolute; top: 400px; left:1410px; background-color: #005391}
+.Oddstable{position:absolute; table-layout:'fixed'; top: 410px; left:1410px; width: 459px; background-color: #005391}
 
-.simButton {position:absolute; top: 930px; left:30px}
+.simButton {position:absolute; top: 900px; left:813px}
